@@ -1,8 +1,8 @@
 /** @file cstring.h
-* 
-* @brief String Implementation in C 
 *
-*/ 
+* @brief String Implementation in C
+*
+*/
 
 // include guard
 #ifndef CSTRING_H
@@ -13,35 +13,34 @@
 extern "C" {
 #endif
 
-#include <libraries>
+#include <stdlib.h>
+#include <string.h>
 
 #define DEFAULT_LEN 10
-
-typedef struct {
+typedef struct String String;
+struct String {
 	char *array;
-
-	void (*destroy)(String current);
-	int (*length)(String current);
-	int (*contains)(String current, char c);
-	int (*findSubstring)(String current, String str);
-	void (*append)(String current, String str);
-	void (*insertAt)(String current, int n, char c);
-
-} String;
+	void (*destroy)(String* current);
+	int (*length)(String* current);
+	int (*contains)(String* current, char c);
+	int (*findSubstring)(String* current, String* str);
+	void (*append)(String* current, String* str);
+	void (*insertAt)(String* current, int n, char c);
+};
 
 String* new_String(char* array);
-void _destroy(String current);
-int _length(String current);
-int _contains(String current, char c);
-int _findSubstring(String current, String str);
-void _append(String current, String str);
-void _insertAt(String current, int n, char c)
+void _destroy(String* current);
+int _length(String* current);
+int _contains(String* current, char c);
+int _findSubstring(String* current, String* str);
+void _append(String* current, String* str);
+void _insertAt(String* current, int n, char c);
 
 
 
 // end c++ guard
 #ifdef __cplusplus
 }
-#endif 
+#endif
 // end include guard
 #endif
