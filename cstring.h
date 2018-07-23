@@ -17,8 +17,12 @@ extern "C" {
 #include <string.h>
 
 #define DEFAULT_LEN 10
+
+// typedef first cos its being used in the struct definition
+
 typedef struct String String;
-struct String {
+struct String
+{
 	char *array;
 	void (*destroy)(String* current);
 	int (*length)(String* current);
@@ -35,7 +39,7 @@ int _contains(String* current, char c);
 int _findSubstring(String* current, String* str);
 void _append(String* current, String* str);
 void _insertAt(String* current, int n, char c);
-
+int *lcommon(char *s, char *t);
 
 
 // end c++ guard
