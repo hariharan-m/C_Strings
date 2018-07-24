@@ -67,10 +67,15 @@ int _findSubstring(String* current, String* str)
 	int *ret;
 	ret = lcommon(current->array, str->array);
 	if (ret[0] == str->length(str))
-		return 1;
+		{
+			free(ret);
+			return 1;
+		}
 	else
-		return 0;
-
+		{
+			free(ret);
+			return 0;
+		}
 }
 
 /*******************************************************************
